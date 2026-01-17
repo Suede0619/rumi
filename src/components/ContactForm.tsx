@@ -86,8 +86,10 @@ export default function ContactForm() {
   return (
     <Section>
       <header className="text-center mb-8">
-        <h2 className="mb-4">Title</h2>
-        <p className="text-muted">Copy</p>
+        <h2 className="mb-4">The Rumi App</h2>
+        <p className="text-muted">
+          A Spiritual Wisdom Companion for the Modern World
+        </p>
       </header>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
