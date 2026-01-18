@@ -8,7 +8,31 @@ export async function POST(request: Request) {
     // Validate the request body
     const validatedData = betaSignupSchema.parse(body);
 
-    // Send to Airtable
+    // Check if email already exists
+    const searchResponse = await fetch(
+      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${process.env.AIRTABLE_TABLE_NAME}?filterByFormula={Email}="${validatedData.email}"`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
+        },
+      },
+    );
+
+    if (!searchResponse.ok) {
+      throw new Error("Failed to check for existing email");
+    }
+
+    const searchData = await searchResponse.json();
+
+    // If email already exists, return success without creating duplicate
+    if (searchData.records && searchData.records.length > 0) {
+      return NextResponse.json({
+        success: true,
+        message: "Successfully signed up for beta",
+      });
+    }
+
+    // Email doesn't exist, create new record
     const airtableResponse = await fetch(
       `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${process.env.AIRTABLE_TABLE_NAME}`,
       {
