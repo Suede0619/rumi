@@ -17,9 +17,9 @@ export default function Home() {
                 className="mx-auto lg:mx-0 mb-[50px] w-[130px] h-[130px] lg:w-[150px] lg:h-[150px]"
               />
               <h1 className="!mb-0">The Rumi App</h1>
-              <h3 className="text-muted">
+              <h4 className="text-muted">
                 A Spiritual Wisdom Companion for the Modern World
-              </h3>
+              </h4>
             </header>
 
             <BetaSignupForm />
