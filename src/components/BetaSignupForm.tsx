@@ -65,7 +65,7 @@ export default function BetaSignupForm() {
   if (status === "error") {
     return (
       <div className="space-y-4">
-        <p className="text-accent">{errorMessage}</p>
+        <p className="!text-[1.4rem] text-accent">{errorMessage}</p>
         <button onClick={() => setStatus("idle")} className="btn btn-primary">
           Try Again
         </button>
