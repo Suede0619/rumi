@@ -16,8 +16,8 @@ export default function Home() {
                 height={150}
                 className="mx-auto lg:mx-0 mb-[50px] w-[130px] h-[130px] lg:w-[150px] lg:h-[150px]"
               />
-              <h1 className="!mb-0">The Rumi App</h1>
-              <h4 className="text-muted">
+              <h1 className="!mb-0 text-center lg:text-left">The Rumi App</h1>
+              <h4 className="text-muted text-center lg:text-left">
                 A Spiritual Wisdom Companion for the Modern World
               </h4>
             </header>

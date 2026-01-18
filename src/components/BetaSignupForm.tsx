@@ -54,7 +54,7 @@ export default function BetaSignupForm() {
 
   if (status === "success") {
     return (
-      <div>
+      <div className="text-center lg:text-left">
         <p className="!text-[1.4rem] text-accent">
           A seed has been planted in the quiet earth, wait for the bloom.
         </p>
@@ -64,7 +64,7 @@ export default function BetaSignupForm() {
 
   if (status === "error") {
     return (
-      <div className="space-y-4">
+      <div className="space-y-4 text-center lg:text-left">
         <p className="!text-[1.4rem] text-accent">{errorMessage}</p>
         <button onClick={() => setStatus("idle")} className="btn btn-primary">
           Try Again
