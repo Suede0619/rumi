@@ -9,8 +9,11 @@ export async function POST(request: Request) {
     const validatedData = betaSignupSchema.parse(body);
 
     // Check if email already exists
+    const filterFormula = encodeURIComponent(
+      `{Email}="${validatedData.email}"`,
+    );
     const searchResponse = await fetch(
-      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${process.env.AIRTABLE_TABLE_NAME}?filterByFormula={Email}="${validatedData.email}"`,
+      `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${process.env.AIRTABLE_TABLE_NAME}?filterByFormula=${filterFormula}`,
       {
         headers: {
           Authorization: `Bearer ${process.env.AIRTABLE_API_KEY}`,
@@ -19,6 +22,8 @@ export async function POST(request: Request) {
     );
 
     if (!searchResponse.ok) {
+      const errorData = await searchResponse.json();
+      console.error("Airtable search error:", searchResponse.status, errorData);
       throw new Error("Failed to check for existing email");
     }
 
