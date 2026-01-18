@@ -54,8 +54,10 @@ export default function BetaSignupForm() {
 
   if (status === "success") {
     return (
-      <div className="text-center">
-        <p className="text-accent">Thank you! We&apos;ll be in touch soon.</p>
+      <div>
+        <p className="!text-[1.4rem] text-accent">
+          A seed has been planted in the quiet earth, wait for the bloom.
+        </p>
       </div>
     );
   }
