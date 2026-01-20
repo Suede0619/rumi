@@ -28,7 +28,7 @@ export default function Home() {
           {/* Image (appears second on mobile, left on desktop) */}
           <div className="flex justify-center px-4 pb-16 lg:p-5 order-2 lg:order-1">
             <Image
-              src="/images/horse-left.webp"
+              src="/images/cohort.webp"
               alt="Decorative horse illustration"
               width={800}
               height={800}
