@@ -35,9 +35,9 @@ export default function Home() {
             </blockquote>
 
             <p className="hero-description">
-              Sign up for the beta launch.
+              Sign up for the beta launch of the Rumi spiritual companion app.
               <br />
-              Experience the new way to connect with nature and yourself.
+              Experience the new way to connect with the beloved and yourself.
             </p>
 
             <BetaSignupForm variant="stacked" />
