@@ -397,7 +397,7 @@ a:hover {
     line-height: 1.4;
     color: var(--text-primary);
     padding-left: 1.5rem;
-    border-left: 2px solid var(--accent);
+    border-left: 1px solid var(--color-gold);
     margin: 0;
 }
 
@@ -541,7 +541,7 @@ a:hover {
 
 .two-column-section .column-right {
     padding-left: 2rem;
-    border-left: 1px solid var(--color-charcoal);
+    border-left: 1px solid var(--color-gold);
 }
 
 .two-column-section h2 {
@@ -625,7 +625,7 @@ a:hover {
 }
 
 .signature {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     letter-spacing: 0.1em;
     color: var(--text-muted);
 }
