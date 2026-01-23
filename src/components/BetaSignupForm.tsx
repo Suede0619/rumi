@@ -7,7 +7,13 @@ import { betaSignupSchema, type BetaSignupData } from "@/lib/betaValidation";
 
 type SubmissionStatus = "idle" | "submitting" | "success" | "error";
 
-export default function BetaSignupForm() {
+interface BetaSignupFormProps {
+  variant?: "default" | "inline" | "stacked";
+}
+
+export default function BetaSignupForm({
+  variant = "default",
+}: BetaSignupFormProps) {
   const [status, setStatus] = useState<SubmissionStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -54,8 +60,8 @@ export default function BetaSignupForm() {
 
   if (status === "success") {
     return (
-      <div className="text-center lg:text-left">
-        <p className="!text-[1.4rem] text-accent">
+      <div className={variant === "inline" ? "" : "text-center lg:text-left"}>
+        <p className="!text-[1.2rem] text-accent">
           A seed has been planted in the quiet earth, wait for the bloom.
         </p>
       </div>
@@ -64,12 +70,70 @@ export default function BetaSignupForm() {
 
   if (status === "error") {
     return (
-      <div className="space-y-4 text-center lg:text-left">
-        <p className="!text-[1.4rem] text-accent">{errorMessage}</p>
+      <div
+        className={`space-y-4 ${variant === "inline" ? "" : "text-center lg:text-left"}`}
+      >
+        <p className="!text-[1.2rem] text-accent">{errorMessage}</p>
         <button onClick={() => setStatus("idle")} className="btn btn-primary">
           Try Again
         </button>
       </div>
+    );
+  }
+
+  if (variant === "stacked") {
+    return (
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="signup-form-stacked"
+        noValidate
+      >
+        <div className="signup-input-wrapper">
+          <input
+            {...register("email")}
+            type="email"
+            className="form-field form-input"
+            placeholder="Enter your email"
+            disabled={status === "submitting"}
+          />
+          {errors.email && <p className="form-error">{errors.email.message}</p>}
+        </div>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={status === "submitting"}
+        >
+          {status === "submitting" ? "..." : "Send"}
+        </button>
+      </form>
+    );
+  }
+
+  if (variant === "inline") {
+    return (
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="signup-form-inline"
+        noValidate
+      >
+        <div className="signup-input-wrapper">
+          <input
+            {...register("email")}
+            type="email"
+            className="form-field form-input"
+            placeholder="Enter your email"
+            disabled={status === "submitting"}
+          />
+          {errors.email && <p className="form-error">{errors.email.message}</p>}
+        </div>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={status === "submitting"}
+        >
+          {status === "submitting" ? "..." : "Send"}
+        </button>
+      </form>
     );
   }
 
