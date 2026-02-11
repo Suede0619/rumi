@@ -36,8 +36,7 @@ export default function BetaSignupForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: data.email,
-          name: "Beta Signup",
-          message: "Beta launch signup request",
+          phoneType: data.phoneType,
         }),
       });
 
@@ -98,6 +97,35 @@ export default function BetaSignupForm({
           />
           {errors.email && <p className="form-error">{errors.email.message}</p>}
         </div>
+        <fieldset
+          className="phone-type-fieldset"
+          disabled={status === "submitting"}
+        >
+          <legend className="phone-type-legend">Select your device</legend>
+          <div className="phone-type-options">
+            <label className="phone-type-label">
+              <input
+                {...register("phoneType")}
+                type="radio"
+                value="iphone"
+                className="phone-type-radio"
+              />
+              <span>iPhone</span>
+            </label>
+            <label className="phone-type-label">
+              <input
+                {...register("phoneType")}
+                type="radio"
+                value="android"
+                className="phone-type-radio"
+              />
+              <span>Android</span>
+            </label>
+          </div>
+          {errors.phoneType && (
+            <p className="form-error">{errors.phoneType.message}</p>
+          )}
+        </fieldset>
         <button
           type="submit"
           className="btn btn-primary"
@@ -126,6 +154,35 @@ export default function BetaSignupForm({
           />
           {errors.email && <p className="form-error">{errors.email.message}</p>}
         </div>
+        <fieldset
+          className="phone-type-fieldset"
+          disabled={status === "submitting"}
+        >
+          <legend className="phone-type-legend">Select your device</legend>
+          <div className="phone-type-options">
+            <label className="phone-type-label">
+              <input
+                {...register("phoneType")}
+                type="radio"
+                value="iphone"
+                className="phone-type-radio"
+              />
+              <span>iPhone</span>
+            </label>
+            <label className="phone-type-label">
+              <input
+                {...register("phoneType")}
+                type="radio"
+                value="android"
+                className="phone-type-radio"
+              />
+              <span>Android</span>
+            </label>
+          </div>
+          {errors.phoneType && (
+            <p className="form-error">{errors.phoneType.message}</p>
+          )}
+        </fieldset>
         <button
           type="submit"
           className="btn btn-primary"
@@ -153,6 +210,35 @@ export default function BetaSignupForm({
             <p className="form-error mt-1">{errors.email.message}</p>
           )}
         </div>
+        <fieldset
+          className="phone-type-fieldset"
+          disabled={status === "submitting"}
+        >
+          <legend className="phone-type-legend">Select your device</legend>
+          <div className="phone-type-options">
+            <label className="phone-type-label">
+              <input
+                {...register("phoneType")}
+                type="radio"
+                value="iphone"
+                className="phone-type-radio"
+              />
+              <span>iPhone</span>
+            </label>
+            <label className="phone-type-label">
+              <input
+                {...register("phoneType")}
+                type="radio"
+                value="android"
+                className="phone-type-radio"
+              />
+              <span>Android</span>
+            </label>
+          </div>
+          {errors.phoneType && (
+            <p className="form-error">{errors.phoneType.message}</p>
+          )}
+        </fieldset>
         <button
           type="submit"
           className="btn btn-primary"

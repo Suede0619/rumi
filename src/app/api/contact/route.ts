@@ -7,6 +7,7 @@ export async function POST(request: Request) {
 
     // Validate the request body
     const validatedData = betaSignupSchema.parse(body);
+    const phoneType = validatedData.phoneType;
 
     // Check if email already exists
     const filterFormula = encodeURIComponent(
@@ -51,6 +52,7 @@ export async function POST(request: Request) {
             {
               fields: {
                 Email: validatedData.email,
+                "Phone Type": phoneType,
               },
             },
           ],
